@@ -4,7 +4,7 @@
 
     <div data-wio-id="{{ $document->id }}">
 
-        @foreach ($document->data->body as $slice)
+        @foreach ($document->data->page_content as $slice)
             @switch ($slice->slice_type)
                 @case ('highlight_section')
                     @include('partials.slices.highlight-section', ['slice' => $slice])

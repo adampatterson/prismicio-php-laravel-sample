@@ -24,10 +24,12 @@ use Illuminate\Http\Request;
 
 Route::get('/preview', function (Request $request) {
     $token = $request->input('token');
-    if (!isset($token)) {
+    if ( ! isset($token)) {
         return abort(400, 'Bad Request');
     }
+
     $url = $request->attributes->get('api')->previewSession($token, $request->attributes->get('linkResolver'), '/');
+
     return response(null, 302)->header('Location', $url);
 });
 
@@ -39,7 +41,8 @@ Route::get('/preview', function (Request $request) {
 
 Route::get('/', function (Request $request) {
     // Query the homepage document by single type
-    $document = $request->attributes->get('api')->getSingle('homepage');
+    $document        = $request->attributes->get('api')->getSingle('homepage');
+    $homepage_banner = $document->data->homepage_banner[0];
 
     // Render 404 page if homepage document doesn't exist
     if (isset($document) === false) {
@@ -48,12 +51,12 @@ Route::get('/', function (Request $request) {
 
     // Fill meta array
     $meta = [
-        'title' => isset($document->data->meta_title) ? $document->data->meta_title : null,
+        'title'       => isset($document->data->meta_title) ? $document->data->meta_title : null,
         'description' => isset($document->data->meta_description) ? $document->data->meta_description : null,
     ];
 
     // Render the page
-    return view('homepage', ['document' => $document, 'meta' => $meta]);
+    return view('homepage', ['document' => $document, 'meta' => $meta, 'homepage_banner' => $homepage_banner]);
 });
 
 /*
@@ -73,7 +76,7 @@ Route::get('/{uid}', function ($uid, Request $request) {
 
     // Fill meta array
     $meta = [
-        'title' => isset($document->data->meta_title) ? $document->data->meta_title : null,
+        'title'       => isset($document->data->meta_title) ? $document->data->meta_title : null,
         'description' => isset($document->data->meta_description) ? $document->data->meta_description : null,
     ];
 

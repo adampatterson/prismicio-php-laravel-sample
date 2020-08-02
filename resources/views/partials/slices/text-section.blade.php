@@ -10,5 +10,5 @@
 @endphp
 
 <section class="text-section l-grid-container {{ $sectionClass }}">
-    {!! RichText::asHtml($slice->primary->text, $linkResolver) !!}
+    {!! RichText::asHtml($slice->primary->rich_text, $linkResolver) !!}
 </section>
