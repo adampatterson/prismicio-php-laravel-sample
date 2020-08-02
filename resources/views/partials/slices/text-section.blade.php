@@ -8,7 +8,6 @@
         $sectionClass = 'text-section-1col';
     }
 @endphp
-
-<section class="text-section l-grid-container {{ $sectionClass }}">
+<section class="text-section {{ $sectionClass }}">
     {!! RichText::asHtml($slice->primary->rich_text, $linkResolver) !!}
 </section>

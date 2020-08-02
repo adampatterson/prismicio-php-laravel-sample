@@ -25,31 +25,39 @@
     <link href="{{ asset('img/favicon.png') }}" rel="shortcut icon" type="image/x-icon">
 
     {{--  Fonts  --}}
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,400i,300,700,700i,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400italic,700,700italic" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!--  Style  -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/reset.css"/>
+    <link rel="stylesheet" href="/stylesheets/style.css"/>
+    <link rel="stylesheet" href="/stylesheets/common.css"/>
 
     {{--  Scripts  --}}
     <script>
         // Required for previews and experiments
         window.prismic = {
             endpoint: '{{ $endpoint }}'
-        };
+        }
     </script>
     <script src="https://static.cdn.prismic.io/prismic.js"></script>
     <script src="{{ asset('js/app.js') }}"></script>
 </head>
 <body>
+@if (\Route::currentRouteName() == 'home')
+    <div class="homepage" data-wio-id="{{ $document->id }}">
+        @else
+            <div class="page" data-wio-id="{{ $document->id }}">
+                @endif
 
-    @include('partials/header')
+                @include('partials/header')
 
-    <main>
-        @yield('content')
-    </main>
+                <main>
+                    @yield('content')
+                </main>
 
-    @include('partials/footer')
-
+                @include('partials/footer')
+            </div>
 </body>
 </html>

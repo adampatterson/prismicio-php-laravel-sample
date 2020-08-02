@@ -5,7 +5,7 @@
 @endphp
 
 @if (isset($menu))
-    <header class="site-header l-grid-container dark">
+    <header class="site-header">
         <a href="/">
             <div class="logo">{{ RichText::asText($menu->data->title) }}</div>
         </a>

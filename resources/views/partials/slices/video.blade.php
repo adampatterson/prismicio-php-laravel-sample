@@ -1,5 +1,5 @@
 @if (isset($slice->primary->embed->html))
-    <section class="l-content-section video l-grid-container">
+    <section class="content-section video">
         {!! $slice->primary->embed->html !!}
     </section>
 @endif

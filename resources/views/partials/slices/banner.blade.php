@@ -7,7 +7,7 @@
     $linkText = RichText::asText($slice->primary->link_text);
 @endphp
 
-<section class="banner l-content-section">
+<section class="content-section banner">
     @if (isset($slice->primary->image->url))
         <img src="{{ $slice->primary->image->url }}" alt="{{ $slice->primary->image->alt }}">
     @endif

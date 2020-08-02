@@ -57,7 +57,7 @@ Route::get('/', function (Request $request) {
 
     // Render the page
     return view('homepage', ['document' => $document, 'meta' => $meta, 'homepage_banner' => $homepage_banner]);
-});
+})->name('home');
 
 /*
 |--------------------------------------------------------------------------
